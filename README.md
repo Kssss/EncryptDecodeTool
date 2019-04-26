@@ -1,5 +1,5 @@
 # EncryptDecodeTool
-密码+pbkdf2_hmac 盐 用户ID ,AES,base64,3DES 工具
+密码+pbkdf2_hmac 盐 用户ID ,AES,base64,3DES加解密工具
 
 
 1. 先将密码使用pbkdf2_hmac算法, 哈希算法为 SHA256, 盐为用户id， 次数为1000000 得到十六进制的字符串,截取前32位 为 key 
@@ -30,8 +30,10 @@
 ```
 
 ```js
-/**
-3DES加密
-*/
+//先base64编码---->3DES加密---->再base64编码
 + (NSString *)encrypt3DES:(NSString *)plainText key:(NSString *)key;
+```
+```js
+//先base64解码--->3DES解密------->base64解码
++ (NSString *)decrypt3DES:(NSString *)base64text key:(NSString *)key;
 ```
